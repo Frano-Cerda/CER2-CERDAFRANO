@@ -1,0 +1,30 @@
+{% extends "core/base.html" %}
+{% block content %}
+<div class="container-fluid mt-5">
+    <h1 class="text-center mb-4"><strong>¡Catálogo de Productos!</strong></h1>
+    <div class="row">
+        {% for producto in productos %}
+        <div id= "colcat" class="col-md-4 mb-4">
+            <div class="card h-100 shadow-sm">
+                <img src="{{ producto.imagen.url }}" class="card-img-top" alt="{{ producto.nombre }}" style="height: 250px; object-fit: cover;">
+                <div class="card-body">
+                    <h5 class="card-title">{{ producto.nombre }}</h5>
+                    <p class="card-text">{{ producto.descripcion }}</p>
+                    <p class="card-text"><strong>Precio:</strong> ${{ producto.precio }}</p>
+
+                    {% if user.is_authenticated %}
+                    <form action="{% url 'agregar_al_carrito' producto_id=producto.productoID %}" method="POST">
+                        {% csrf_token %}
+                        <button type="submit" class="btn btn-success">Agregar al Carrito</button>
+                    </form>
+                {% else %}
+                    <p><em>Inicia sesión para agregar al carrito</em></p>
+                {% endif %}
+
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

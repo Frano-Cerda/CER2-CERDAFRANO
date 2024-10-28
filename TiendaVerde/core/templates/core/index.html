@@ -1,0 +1,55 @@
+{% extends "core/base.html" %}
+{% load static %}
+{% block content %}
+
+<div class="container-fluid px-0 py-3">
+    <div class="row gx-0">
+        <!-- Parte izquierda -->
+        <div class="col-lg-3 ">
+            <h2><strong>Nuestra tienda</strong></h2>
+            <p style="font-size: larger;">
+                Tienda Verde es nuestra pequeña empresa dedicada a la venta de productos ecológicos y sostenibles, todo a base del reciclaje.
+            </p>
+            <p style="font-size: larger;">
+                Nuestro propósito es aportar con nuestro grano de arena reciclando y produciendo una diversa variedad de productos a vender. Pero también el promover y concientizar sobre el reciclaje en todos ustedes, yendo a sus casas a recoger su reciclaje.
+            </p>
+            <div class="text-center">
+                <img src="{% static 'core/img/reciclaje.webp' %}" alt="reciclaje" height="250px">
+            </div>
+        </div>
+
+        <!-- Parte central -->
+        <div class="col-lg-6 text-center">
+            <div>
+                <h1 class="nomtienda"><strong>Tienda Verde</strong></h1>
+            </div>
+            <div class="text-center">
+                <img src="{% static 'core/img/tienda verde.png' %}" alt="logo" style="max-width: 100%; height: auto;">
+            </div>
+            <div class="text-center mt-3">
+                <h1>¡Tu tienda ecológica local favorita!</h1>
+            </div>
+        </div>
+
+        <!-- Parte derecha -->
+        <div class="col-lg-3 text-center">
+            <h2><strong>Productos destacados</strong></h2>
+
+            <div>
+                <h5>Ropa reciclada</h5>
+                <a href="catalogo/"><img src="{% static 'core/img/ropa.jpg' %}" alt="ropa reciclada" class="img-fluid mb-3" style="width: 300px; height: auto;"></a>
+            </div>
+            
+            <div>
+                <h5>Vasos con diseño</h5>
+                <a href="catalogo/"><img src="{% static 'core/img/vasos.jpg' %}" alt="vasos" class="img-fluid mb-3" style="width: 300px; height: auto;"></a>
+            </div>
+            
+            <div>
+                <h5>Carcasas para celular</h5>
+                <a href="catalogo/"><img src="{% static 'core/img/carcasa.jpg' %}" alt="carcasa de celular" class="img-fluid" style="width: 300px; height: auto;"></a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

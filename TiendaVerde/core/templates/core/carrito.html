@@ -1,0 +1,44 @@
+{% extends "core/base.html" %}
+{% block content %}
+<div class="container mt-5">
+    <h1 class="text-center mb-4"><strong>Mi Carrito</strong></h1>
+
+    {% if productos_en_carrito %}
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>Producto</th>
+                    <th>Precio Unitario</th>
+                    <th>Cantidad</th>
+                    <th>Subtotal</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for item in productos_en_carrito %}
+                <tr>
+                    <td>{{ item.producto.nombre }}</td>
+                    <td>${{ item.producto.precio }}</td>
+                    <td>{{ item.cantidad }}</td>
+                    <td>${{ item.subtotal }}</td>
+                    <td>
+                        <form action="{% url 'eliminar_del_carrito' item.producto.productoID %}" method="POST" style="display: inline;">
+                            {% csrf_token %}
+                            <button type="submit" class="btn btn-danger btn-sm">Eliminar</button>
+                        </form>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+        <h4 class="text-right">Total: ${{ total_carrito }}</h4>
+        <form action="{% url 'confirmar_pedido' %}" method="post">
+            {% csrf_token %}
+            <button type="submit" class="btn btn-success">Confirmar Pedido</button>
+        </form>
+    {% else %}
+        <p class="text-center">Tu carrito está vacío.</p>
+    {% endif %}
+</div>
+{% endblock %}
